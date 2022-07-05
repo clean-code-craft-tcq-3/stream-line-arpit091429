@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <string> 
 
 static int send_array_temp[10];
 static int send_array_soc[10];
