@@ -23,30 +23,35 @@ std::vector<int> BMSParameters::getBatterySOCValuesInRange(int minSOCVal, int ma
 
 void BMSParameters::sendTemperatureValuesToConsole(int minTempVal, int maxTempVal)
 {
-	int numberOfValues = 10;
-	printf("The values for parameter: Temperature");
-	std::cout << "------------------------------------------------------\n";
-	for (int paramValue = 0; paramValue < numberOfValues; ++paramValue) 
-	{
-		send_array_temp[paramValue] = getBatteryTempValuesInRange(minTempVal,maxTempVal)[paramValue];
-            	printf("%d \n", send_array_temp[paramValue]);
-	}
-	std::cout << "---------------------------------------------------------\n";
+    int numberOfValues = 50;
+    printf("The values for parameter: Temperature");
+    std::cout << "------------------------------------------------------\n";
+    for (int paramValue = 0; paramValue < numberOfValues; ++paramValue)
+    {
+        send_array_temp[paramValue] = getBatteryTempValuesInRange(minTempVal, maxTempVal)[paramValue];
+        if (paramValue < numberOfValues - 1)
+            std::cout << send_array_temp[paramValue] << ",";
+        else
+            std::cout << send_array_temp[paramValue];
+    }
+    std::cout << "\n";
 }
 
 void BMSParameters::sendSOCValuesToConsole(int minSOCVal, int maxSOCVal)
 {
-	int numberOfValues = 20;
-	int count = 0;
-	printf("The values for parameter: SOC");
-	std::cout << "------------------------------------------------------\n";
-	for (int paramValue = 10; paramValue < numberOfValues; ++paramValue) 
-	{
-            	send_array_soc[count] = getBatteryTempValuesInRange(minSOCVal,maxSOCVal)[paramValue];
-            	printf("%d \n", send_array_soc[count]);
-		count++;
-	}
-	std::cout << "---------------------------------------------------------\n";
+    int numberOfValues = 50;
+
+    printf("The values for parameter: SOC");
+    std::cout << "------------------------------------------------------\n";
+    for (int paramValue = 0; paramValue < numberOfValues; ++paramValue)
+    {
+        send_array_soc[paramValue] = getBatterySOCValuesInRange(minSOCVal, maxSOCVal)[paramValue];
+        if (paramValue < numberOfValues - 1)
+            std::cout << send_array_soc[paramValue] << ",";
+        else
+            std::cout << send_array_soc[paramValue];
+    }
+    std::cout << "\n";
 }
 
 bool BMSParameters::sendParameterValuesToConsole( std::string parameterName, int minVal, int maxVal)
