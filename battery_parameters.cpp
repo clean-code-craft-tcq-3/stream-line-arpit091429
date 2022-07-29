@@ -47,7 +47,7 @@ bool BMSParameters::sendParameterValuesToConsole(std::string parameterName, int 
     }
     
     else
-        false;
+     return false;
         
       
 }
