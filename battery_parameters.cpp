@@ -40,6 +40,14 @@ void BMSParameters::sendParamValuesToConsole(T min, T max, std::string parameter
 
 bool BMSParameters::sendParameterValuesToConsole(std::string parameterName, int minVal, int maxVal)
 {
+    if(parameterName == "Temperature" || parameterName == "SOC" )
+    {  
     sendParamValuesToConsole(minVal, maxVal, parameterName);
     return true;
+    }
+    
+    else
+        false;
+        
+      
 }
