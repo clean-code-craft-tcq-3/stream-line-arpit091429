@@ -1,19 +1,16 @@
-#pragma once
+#include <algorithm>
+#include <iostream>
 #include <vector>
-#include <string> 
-
-static int send_array_temp[50];
-static int send_array_soc[50];
+static int send_array_param[50];
 
 class BMSParameters
 {
 
-public:
-
+  public:
     std::vector<int> getBatteryTempValuesInRange(int minTempVal, int maxTempVal);
     std::vector<int> getBatterySOCValuesInRange(int minSOCVal, int maxSOCVal);
     std::vector<int> generateRandomPrameters(int minVal, int maxVal);
-    void sendTemperatureValuesToConsole(int minTempVal, int maxTempVal);
-    void sendSOCValuesToConsole(int minSOCVal, int maxSOCVal);
+    template <typename T>
+    void sendParamValuesToConsole(T min, T max, std::string parameterName);
     bool sendParameterValuesToConsole(std::string parameterName, int minVal, int maxVal);
 };
